@@ -32,8 +32,6 @@ Menyer, priser, åpningstider og lagertall er oppdiktede eksempeldata. Appen sam
 
 ## Hvordan vi brukte AI
 
-## Hvordan vi brukte AI
-
 Vi brukte **Claude** som kodeassistent gjennom hele oppgaven, fra idé til publisering. Vi har ikke skrevet koden selv. Vår jobb var å bestemme hva som skulle lages, teste, finne feil og få AI-en til å rette dem.
 
 ### Slik jobbet vi
@@ -82,7 +80,7 @@ Automatiske tester i nettleser (Playwright) som AI-en kjørte:
 
 ### Våre egne tester
 
-Vi testet siden selv på pc [og mobil] etter at den var publisert på GitHub Pages.
+Vi testet siden selv på pc etter at den var publisert på GitHub Pages.
 
 | Hva vi testet | Resultat | Hva vi endret |
 |---|---|---|
