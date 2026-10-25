@@ -32,15 +32,42 @@ Menyer, priser, åpningstider og lagertall er oppdiktede eksempeldata. Appen sam
 
 ## Hvordan vi brukte AI
 
-- Verktøy: Claude
-- Prosess: brainstormet ideer, valgte kantine-idéen selv, lot AI lage første versjon, la til flere bygg, og testet.
-- Prompt-logg:
-- - Vi spurte: «Har du noen andre ideer til hva jeg kan lage oppgaven om? Som passer oppgaveteksten?» (brainstorming av idé)
+## Hvordan vi brukte AI
+
+Vi brukte **Claude** som kodeassistent gjennom hele oppgaven, fra idé til publisering. Vi har ikke skrevet koden selv. Vår jobb var å bestemme hva som skulle lages, teste, finne feil og få AI-en til å rette dem.
+
+### Slik jobbet vi
+
+1. **Idéfase:** Vi skrev ned egne idéer til forbedring av kjente apper (blant annet Letterboxd, Prime Video, Temu, Outlook og Goodreads). Vi ba AI-en om flere forslag som passet oppgaveteksten, og fikk en liste sortert etter tilnærming (hverdagsproblem, hjelpe en organisasjon, forbedre en kjent app).
+2. **Første prototype:** Vi valgte en Spotify-inspirert spilleliste-app og lot AI-en lage en første versjon med spillelister, dra og slipp-sortering og «mix» av to lister. Vi vurderte den og bestemte oss for å gå for en annen idé.
+3. **Vår egen idé:** Vi kom selv på at kantinen på OsloMet kunne hatt en app som viser dagens meny og hvor mange som er igjen av varer som Monster. Vi beskrev idéen til AI-en, og fikk første versjon av Spisa med meny per dag, lagerstatus og en personalvisning.
+4. **Utvidelse:** Vi ba om å legge til byggene P35, P32 og P48, som hver har egen meny og eget lager.
+5. **Testing og retting:** AI-en kjørte automatiske tester i en nettleser og fant to feil som den rettet. Etterpå testet vi selv siden på GitHub Pages og fant en tredje feil (se «Testing og forbedringer» under), som AI-en også rettet.
+6. **Publisering:** AI-en forklarte steg for steg hvordan vi la koden på GitHub og slo på GitHub Pages. Da vi fikk problemer (feil filnavn), sendte vi skjermbilder, og AI-en hjalp oss å finne årsaken.
+
+### Hva AI-en gjorde, og hva vi gjorde
+
+| AI-en | Vi |
+|---|---|
+| Skrev koden (HTML, CSS og JavaScript) | Valgte idé og hva appen skulle gjøre |
+| Foreslo ideer og lagde utkast til README | Valgte byggene og bestemte hva som skulle med |
+| Kjørte automatiske tester og rettet feil | Testet selv, fant feil og beskrev dem |
+| Forklarte hvordan vi publiserer | Lastet opp, rettet filnavnet og publiserte |
+
+### Hva vi lærte
+
+- AI-en lager ikke alltid kode som fungerer perfekt. Vi fant feil som både den og vi måtte teste oss fram til.
+- Det hjelper å beskrive nøyaktig hva vi ser, og å sende skjermbilde, når noe ikke fungerer.
+- Små ting som et feil filnavn (`index(1).html` i stedet for `index.html`) kan stoppe hele siden fra å virke.
+- AI-en er et verktøy, og vi må selv vurdere om resultatet er bra nok og passer til det vi ville lage.
+
+### Prompt-logg
+
+- Vi spurte: «Har du noen andre ideer til hva jeg kan lage oppgaven om? Som passer oppgaveteksten?» (brainstorming av idé)
 - Vi spurte: «Kan du lage en ny applikasjon. Kantinen på OsloMet kunne hatt en app/nettside hvor det står meny i kantinen for hver dag, hva de selger, hvor mange som er igjen av f.eks. Monster» (vår egen idé, første versjon av Spisa)
 - Vi ba om: «Du må legge til ulike bygg: bygg P35, bygg P32 og P48. Test applikasjonen» (utvidelse og testing)
 - Vi oppdaget under egen testing: «Det går ikke å trykke på personalvisning» (feilen førte til en forbedring)
 - Vi spurte: «Forklar meg enkelt hvordan jeg tester siden» (hjelp til testing)
-## Testing og forbedringer
 
 Automatiske tester i nettleser (Playwright) som AI-en kjørte:
 
