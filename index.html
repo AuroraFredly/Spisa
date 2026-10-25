@@ -127,11 +127,11 @@ function renderCats(){
 }
 function renderStock(){
  const l=ITEMS.filter(i=>S().left[i.id]!==undefined&&(cat==="Alle"||i.cat===cat)&&(!only||staff||S().left[i.id]>0));
- $("stock").innerHTML=l.length?l.map(i=>{const [c,t]=status(i),n=S().left[i.id];
+ $("stock").innerHTML=(staff?`<div class="note"><b>Personalvisning er på.</b> Bruk −1, +1, Fyll opp og Utsolgt under hver vare. Trykk «Avslutt personalvisning» øverst når du er ferdig.</div>`:"")+(l.length?l.map(i=>{const [c,t]=status(i),n=S().left[i.id];
   return `<div class="item ${c}"><b>${i.n}</b><span class="st">${n>0?n+" igjen":""} ${t}</span>
   <div class="bar" role="img" aria-label="${n} av ${i.max}"><i style="width:${Math.round(n/i.max*100)}%"></i></div>
   ${staff?`<div class="staff"><button data-m="${i.id}" data-s="-1" ${n<=0?"disabled":""} aria-label="Ta bort én ${i.n}">−1</button><button data-m="${i.id}" data-s="1" ${n>=i.max?"disabled":""} aria-label="Legg til én ${i.n}">+1</button><button data-m="${i.id}" data-s="full">Fyll opp</button><button data-m="${i.id}" data-s="zero">Utsolgt</button></div>`:""}</div>`}).join("")
-  :`<div class="empty">Ingenting å vise her. Alt i denne kategorien er utsolgt, eller så er den tom. Slå av «Skjul utsolgte» for å se alt.</div>`;
+  :`<div class="empty">Ingenting å vise her. Alt i denne kategorien er utsolgt, eller så er den tom. Slå av «Skjul utsolgte» for å se alt.</div>`);
  $("upd").textContent=S().t?"Sist oppdatert av personalet i "+bld+": "+new Date(S().t).toLocaleString("no-NO",{weekday:"long",hour:"2-digit",minute:"2-digit"}):"Ikke oppdatert i dag (eksempeldata).";
 }
 const all=()=>{renderBld();renderDays();renderMenu();renderCats();renderStock()};
@@ -140,7 +140,8 @@ $("days").onclick=e=>{const b=e.target.closest("[data-d]");if(b){day=+b.dataset.
 $("diet").onclick=e=>{const b=e.target.closest("[data-t]");if(!b)return;const t=b.dataset.t;diet.has(t)?diet.delete(t):diet.add(t);renderDays();renderMenu()};
 $("cats").onclick=e=>{const b=e.target.closest("[data-c]");if(b){cat=b.dataset.c;renderCats();renderStock()}};
 $("onlyIn").onclick=()=>{only=!only;renderCats();renderStock()};
-$("staffBtn").onclick=()=>{staff=!staff;$("staffBtn").className=staff?"on":"";$("staffBtn").setAttribute("aria-pressed",staff);renderStock()};
+$("staffBtn").onclick=()=>{staff=!staff;$("staffBtn").className=staff?"on":"";$("staffBtn").setAttribute("aria-pressed",staff);$("staffBtn").textContent=staff?"Avslutt personalvisning":"Personalvisning";renderStock();
+ if(staff)$("stockH").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"})};
 $("stock").onclick=e=>{const b=e.target.closest("[data-m]");if(!b)return;const i=ITEMS[+b.dataset.m],s=b.dataset.s;let n=S().left[i.id];
  n=s==="full"?i.max:s==="zero"?0:Math.max(0,Math.min(i.max,n+ +s));S().left[i.id]=n;S().t=Date.now();save();renderStock()};
 $("reset").onclick=()=>{if(confirm("Tilbakestille lageret i alle bygg til eksempeldata?")){st=mk();save();renderStock()}};
