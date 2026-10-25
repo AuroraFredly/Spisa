@@ -1,5 +1,7 @@
 # Spisa
 
+**Laget av:** [Aurora Guttormsen Fredly] og [Frida Knivsflå Strand]
+
 Spisa er en nettside der studenter kan se dagens meny i kantinene og hvor mange av hver vare som er igjen. Appen er inspirert av kantinene i bygg P35, P32 og P48 ved OsloMet, men er en prototype med oppdiktede data og er ikke en offisiell tjeneste.
 
 **Demo:** https://aurorafredly.github.io/Spisa/
@@ -28,12 +30,16 @@ Menyer, priser, åpningstider og lagertall er oppdiktede eksempeldata. Appen sam
 - Lagertallene lagres kun i den enkelte nettleseren (localStorage). En ekte løsning ville trengt en database, slik at alle ser de samme tallene.
 - Personalvisningen har ingen innlogging, siden dette er en prototype.
 
-## Hvordan jeg brukte AI
+## Hvordan vi brukte AI
 
 - Verktøy: Claude
 - Prosess: brainstormet ideer, valgte kantine-idéen selv, lot AI lage første versjon, la til flere bygg, og testet.
-- Prompt-logg: [legg inn 3-5 sentrale prompter, for eksempel idéen om kantineappen og ønsket om bygg P35, P32 og P48]
-
+- Prompt-logg:
+- - Vi spurte: «Har du noen andre ideer til hva jeg kan lage oppgaven om? Som passer oppgaveteksten?» (brainstorming av idé)
+- Vi spurte: «Kan du lage en ny applikasjon. Kantinen på OsloMet kunne hatt en app/nettside hvor det står meny i kantinen for hver dag, hva de selger, hvor mange som er igjen av f.eks. Monster» (vår egen idé, første versjon av Spisa)
+- Vi ba om: «Du må legge til ulike bygg: bygg P35, bygg P32 og P48. Test applikasjonen» (utvidelse og testing)
+- Vi oppdaget under egen testing: «Det går ikke å trykke på personalvisning» (feilen førte til en forbedring)
+- Vi spurte: «Forklar meg enkelt hvordan jeg tester siden» (hjelp til testing)
 ## Testing og forbedringer
 
 Automatiske tester i nettleser (Playwright) som AI-en kjørte:
